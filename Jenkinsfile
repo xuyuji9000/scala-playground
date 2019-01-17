@@ -43,7 +43,8 @@ pipeline {
       steps {
         script {
           sh '''
-          ./gradlew build
+          sbt compile
+          sbt jacoco
           '''
         }
       }
