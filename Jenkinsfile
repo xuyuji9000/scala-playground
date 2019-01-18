@@ -62,7 +62,7 @@ pipeline {
           sbt -no-colors coverageReport
           '''
         }
-        step([$class: 'ScoveragePublisher', reportDir: 'target/scala-2.*/scoverage-report', reportFile: 'scoverage.xml'])
+        step([$class: 'ScoveragePublisher', reportDir: "target/scala-2.*/scoverage-report", reportFile: 'scoverage.xml'])
       }
     }
 
