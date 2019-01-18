@@ -52,17 +52,12 @@ pipeline {
     stage('Test Coverage') {
       steps {
         echo 'Code Coverage'
-        // jacoco(
-        //   minimumLineCoverage : '40',
-        //   maximumLineCoverage: '100',
-        //   changeBuildStatus: true
-        // )
         script {
           sh '''
           sbt  -no-colors clean coverage test coverageReport
           '''
         }
-        step([$class: 'ScoveragePublisher', reportDir: "target/scala-2.*/scoverage-report", reportFile: 'scoverage.xml'])
+        step([$class: 'ScoveragePublisher', reportDir: "target/scala-2.12/scoverage-report", reportFile: 'scoverage.xml'])
       }
     }
 
