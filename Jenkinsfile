@@ -43,7 +43,7 @@ pipeline {
       steps {
         script {
           sh '''
-          sbt compile
+          sbt -no-colors compile
           '''
         }
       }
@@ -59,7 +59,7 @@ pipeline {
         // )
         script {
           sh '''
-          sbt coverageReport
+          sbt -no-colors coverageReport
           '''
         }
         step([$class: 'ScoveragePublisher', reportDir: 'target/scala-2.*/scoverage-report', reportFile: 'scoverage.xml'])
