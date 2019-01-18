@@ -59,7 +59,7 @@ pipeline {
         // )
         script {
           sh '''
-          sbt -no-colors coverageReport
+          sbt  -no-colors clean coverage test coverageReport
           '''
         }
         step([$class: 'ScoveragePublisher', reportDir: "target/scala-2.*/scoverage-report", reportFile: 'scoverage.xml'])
