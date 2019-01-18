@@ -44,7 +44,6 @@ pipeline {
         script {
           sh '''
           sbt compile
-          sbt jacoco
           '''
         }
       }
@@ -52,12 +51,13 @@ pipeline {
 
     stage('Test Coverage') {
       steps {
-        echo 'Code Coverage'
-        jacoco(
-          minimumLineCoverage : '40',
-          maximumLineCoverage: '100',
-          changeBuildStatus: true
-        )
+        // echo 'Code Coverage'
+        // jacoco(
+        //   minimumLineCoverage : '40',
+        //   maximumLineCoverage: '100',
+        //   changeBuildStatus: true
+        // )
+        step([$class: 'ScoveragePublisher', reportDir: 'target/scala-2.*/scoverage-report', reportFile: 'scoverage.xml'])
       }
     }
 
