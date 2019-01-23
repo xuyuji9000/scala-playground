@@ -54,10 +54,11 @@ pipeline {
         echo 'Code Coverage'
         script {
           sh '''
-          sbt  -no-colors clean coverage test coverageReport
+          #sbt  -no-colors clean coverage test coverageReport
+          sbt coverageReport
           '''
         }
-        step([$class: 'ScoveragePublisher', reportDir: "target/scala-2.12/scoverage-report", reportFile: 'scoverage.xml'])
+        // step([$class: 'ScoveragePublisher', reportDir: "target/scala-2.12/scoverage-report", reportFile: 'scoverage.xml'])
       }
     }
 
