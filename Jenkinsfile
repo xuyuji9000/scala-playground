@@ -58,6 +58,11 @@ pipeline {
           sbt jacoco
           '''
         }
+        jacoco(
+          minimumLineCoverage : '40',
+          maximumLineCoverage: '100',
+          changeBuildStatus: true
+        )
         // step([$class: 'ScoveragePublisher', reportDir: "target/scala-2.12/scoverage-report", reportFile: 'scoverage.xml'])
       }
     }
