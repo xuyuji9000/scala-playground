@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: scala
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - scala.yogiman.cn
+    secretName: aks-ingress-tls
+  rules:
+  - host: scala.yogiman.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: scala
+          servicePort: 8080
